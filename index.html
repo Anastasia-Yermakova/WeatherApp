@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My weather app</title>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vollkorn&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/3bd9bc780e.js" crossorigin="anonymous"></script>    
+<link rel="stylesheet" href="src/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <body>
+    <div class="container">
+
+        <div class="container-md">
+          <i id="my-location" class="fa-solid fa-location-dot"></i>
+          <form id="search-form" class="search-form">  
+          <input type="search" name="Enter the city" id="search-field" placeholder="Enter the city" class="search-field">
+          <input type="button" value="Search" class="search-button" id="search-button">
+          </form>
+            
+          
+
+          <div class="row local-data">
+          <div class="col-3 city">
+            
+             <strong> <span class="city" id="city"> Odessa,</span> <br /> <span id="country"> Country,</span> </strong>
+                <br>
+                <span id="date">date</span> <span id="month">mon</span> <br /> <span id="hours">hours</span>:<span id="minutes">minutes</span>
+          
+        </div>
+        <div class="col-6">
+          <img src="images/icons/part-cloudy.png" alt="cloudy" class="weather-icon-main">
+            <span id="degrees" class="degrees">27&#176;C</span> <a class="switchDegrees" id="switch-unit" href="#">switch to F</a> <br />
+           <span class="weather-conditions" id="weather-conditions"> Partly cloudy </span>
+      
+    </div>
+        <div class="col-3 weather-details">
+          <ul>
+            <li class="real-feel">
+              Real feel: <span id="real-feel">29</span>&#176;C
+            </li>
+            <li class="humidity">
+              Humidity: <span id="humidity">70</span>%
+            </li>
+            <li class="wind">
+              Wind: <span id="wind">3</span>m/s
+            </li>
+            
+
+          </ul>
+        
+          
+        </div>
+        </div>
+  
+        <div class="row week">
+          <div class="col first-day">
+            Monday
+            <img src="images/icons/rainy.png" alt="" class="weather-icon-small">
+            <div class="week-degrees">
+              <strong> 29&#176;</strong>/21&#176;            </div>
+            Rainy
+
+          </div>
+          <div class="col first-day">
+           Tuesday
+           <img src="images/icons/sunny.png" alt="" class="weather-icon-small">  
+           <div class="week-degrees">
+           <strong> 34&#176;</strong>/21&#176;
+          </div>
+            Sunny
+            </div>
+            <div class="col first-day">
+            Wednesday
+            <img src="images/icons/storm.png" alt="" class="weather-icon-small">
+            <div class="week-degrees">
+              <strong> 27&#176;</strong>/20&#176;
+            </div>
+            Storm
+              </div>
+              <div class="col first-day">
+            Thursday
+            <img src="images/icons/hail.png" alt="" class="weather-icon-small">
+            <div class="week-degrees">
+              <strong> 29&#176;</strong>/23&#176;
+            </div>
+            Hail
+                </div>
+                <div class="col last-day">
+            Friday
+            <img src="images/icons/clouds.png" alt="" class="weather-icon-small">
+            <div class="week-degrees">
+              <strong> 20&#176;</strong>/16&#176;            </div>
+            Cloudy
+                  </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>

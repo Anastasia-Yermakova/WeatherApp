@@ -1,0 +1,156 @@
+body,
+html {
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background: linear-gradient(
+    68.1deg,
+    rgb(248, 205, 205) -0.3%,
+    rgb(149, 170, 211) 100.7%
+  );
+  font-family: "Vollkorn", serif;
+}
+
+ul {
+  padding: 0px;
+  font-size: larger;
+  color: #252060;
+  list-style: none;
+  text-align: left;
+}
+
+.container-md {
+  padding: 50px 11px 2px;
+  text-align: center;
+  border: 1px solid rgb(194, 193, 193);
+  margin: 100px 0;
+  background: rgba(255, 255, 255, 0.23);
+  backdrop-filter: blur(20px);
+  box-shadow: 0px 10px 50px grey;
+  border-radius: 14px;
+}
+
+.col {
+  width: 20%;
+  margin: 20px 0;
+  padding: 5px 0 0;
+}
+
+.first-day {
+  border-right: 1px solid grey;
+  border-left: hidden;
+  border-top: hidden;
+  border-bottom: hidden;
+}
+.last-day {
+  border-top: 1px solid grey;
+  border-right: hidden;
+  border-left: hidden;
+  border-top: hidden;
+  border-bottom: hidden;
+}
+
+.search-field {
+  background-color: rgba(255, 255, 255, 0.23);
+  border: 1px solid rgba(37, 32, 96, 0.3);
+  border-radius: 4px;
+  line-height: 2;
+  font-size: smaller;
+  margin-bottom: 40px;
+  width: 60%;
+  color: #252060;
+  transition: ease-in-out all 90ms;
+}
+
+.search-field:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.search-field:focus {
+  outline: none;
+}
+
+::placeholder {
+  color: #28236a;
+  opacity: 60%;
+  font-size: smaller;
+}
+
+.city {
+  text-transform: capitalize;
+}
+
+.search-button {
+  line-height: 2;
+  font-size: smaller;
+  border-radius: 4px;
+  border: 1px solid rgba(37, 32, 96, 0.3);
+  margin-bottom: 20px;
+  background-color: rgba(255, 255, 255, 0.54);
+  color: #28236a;
+  transition: ease-in-out all 90ms;
+}
+
+.search-button:hover {
+  background-color: #dddcf3;
+}
+
+.weather-icon-main {
+  width: 20%;
+  display: inline;
+  margin-bottom: 15px;
+}
+
+.weather-icon-small {
+  width: 25%;
+  display: block;
+  margin: 0 auto;
+}
+
+.current {
+  margin: 10px 10px 15px;
+  color: #28236a;
+  background-color: rgba(137, 43, 226, 0.452);
+}
+
+.week {
+  font-size: 1vw;
+  color: #28236a;
+  margin-top: 10px;
+}
+
+.degrees {
+  font-size: 4vw;
+  font-weight: 900;
+  background: -webkit-linear-gradient(rgb(255, 59, 59), rgb(77, 0, 0));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.fa-location-dot {
+  display: inline;
+  color: #252060;
+  opacity: 70%;
+}
+
+.city {
+  font-size: 14px;
+  color: #252060;
+}
+
+.weather-conditions {
+  font-weight: 600;
+  color: #252060;
+}
+
+.weather-details {
+  font-size: 1vw;
+}
+
+.switchDegrees {
+  font-size: smaller;
+  position: relative;
+  top: -20px;
+  text-decoration: none;
+  color: #252060;
+}
