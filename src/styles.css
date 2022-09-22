@@ -124,6 +124,7 @@ ul {
   font-weight: 900;
   background: -webkit-linear-gradient(rgb(255, 59, 59), rgb(77, 0, 0));
   -webkit-background-clip: text;
+
   -webkit-text-fill-color: transparent;
 }
 
@@ -152,5 +153,9 @@ ul {
   position: relative;
   top: -20px;
   text-decoration: none;
+  color: #252060;
+}
+
+.github {
   color: #252060;
 }
