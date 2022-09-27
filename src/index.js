@@ -35,6 +35,8 @@ let searchForm = document.querySelector("#search-form");
 let searchField = document.querySelector("#search-field");
 let searchButton = document.querySelector("#search-button");
 
+let realCelsius = 0;
+
 function displayWeather(response) {
   console.log(response.data);
   let city = document.querySelector("#city");
@@ -55,8 +57,9 @@ function displayWeather(response) {
   let icon = `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`;
 
   weatherIconMain.setAttribute("src", icon);
-}
 
+  realCelsius = degrees.innerHTML;
+}
 function searchCity(event) {
   event.preventDefault();
   let city = document.querySelector("#city");
@@ -85,24 +88,26 @@ function locateUser() {
 let locateMeIcon = document.querySelector("#my-location");
 locateMeIcon.addEventListener("click", locateUser);
 
-//let tempUnit = document.querySelector("#switch-unit");
-//let celsius = true; //meaning now I have Celsius
+let tempUnit = document.querySelector("#switch-unit");
+let celsius = true;
 
-//function convertToF(event) {
-//event.preventDefault();
+function convertToF(event) {
+  event.preventDefault();
+  let unit = document.querySelector("#switch-unit");
+  let degrees = document.querySelector("#degrees");
+  let fahrenheit = Math.round((realCelsius * 9) / 5 + 32);
 
-//let unit = document.querySelector("#switch-unit");
-//let degrees = document.querySelector("#degrees");
+  if (celsius === true) {
+    degrees.innerHTML = `${fahrenheit}&#176;F`;
+    unit.innerHTML = "switch to C";
+    celsius = false;
+  } else {
+    degrees.innerHTML = `${realCelsius}&#176;C`;
+    unit.innerHTML = "switch to F";
+    celsius = true;
+  }
+}
 
-//if (celsius === true) {
-//degrees.innerHTML = "68&#176;F";
-//unit.innerHTML = "switch to C";
-//celsius = false;
-// } else {
-//degrees.innerHTML = "27&#176;C";
-//unit.innerHTML = "switch to F";
-//celsius = true;
-// }
-//}
+tempUnit.addEventListener("click", convertToF);
 
-//tempUnit.addEventListener("click", convertToF);
+locateUser();
