@@ -1,4 +1,5 @@
 let currentDate = new Date();
+console.log(currentDate);
 
 let date = document.querySelector("#date");
 date.innerHTML = currentDate.getDate();
@@ -44,7 +45,7 @@ function displayWeather(response) {
   let country = document.querySelector("#country");
   country.innerHTML = response.data.sys.country;
   let degrees = document.querySelector("#degrees");
-  degrees.innerHTML = Math.round(response.data.main.temp);
+  degrees.innerHTML = `${Math.round(response.data.main.temp)}&#176;C`;
   let realFeel = document.querySelector("#real-feel");
   realFeel.innerHTML = Math.round(response.data.main.feels_like);
   let humidity = document.querySelector("#humidity");
@@ -58,7 +59,7 @@ function displayWeather(response) {
 
   weatherIconMain.setAttribute("src", icon);
 
-  realCelsius = degrees.innerHTML;
+  realCelsius = Math.round(response.data.main.temp);
 }
 function searchCity(event) {
   event.preventDefault();
