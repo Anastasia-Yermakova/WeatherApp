@@ -1,5 +1,4 @@
 let currentDate = new Date();
-console.log(currentDate);
 
 let date = document.querySelector("#date");
 date.innerHTML = currentDate.getDate();
@@ -41,8 +40,13 @@ let celsius = true;
 
 let realCelsius = 0;
 
+function getForecast(coordinates) {
+  let apiKey = "96771e971243152d6b8948878c26adde";
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiURL).then(showForecast);
+}
+
 function displayWeather(response) {
-  console.log(response.data);
   let city = document.querySelector("#city");
   city.innerHTML = response.data.name;
   let country = document.querySelector("#country");
@@ -63,13 +67,15 @@ function displayWeather(response) {
   weatherIconMain.setAttribute("src", icon);
 
   realCelsius = Math.round(response.data.main.temp);
+
+  getForecast(response.data.coord);
 }
 function searchCity(event) {
   event.preventDefault();
   let city = document.querySelector("#city");
   city.innerHTML = searchField.value;
 
-  let apiKey = "9e0fb79c2f66d0cd0dcf06710976a873";
+  let apiKey = "96771e971243152d6b8948878c26adde";
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city.innerHTML}&appid=${apiKey}&units=metric`;
   axios.get(url).then(displayWeather);
   tempUnit.innerHTML = "switch to F";
@@ -80,7 +86,6 @@ searchForm.addEventListener("submit", searchCity);
 searchButton.addEventListener("click", searchCity);
 
 function getPosition(position) {
-  console.log(position);
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let apiKey = "9e0fb79c2f66d0cd0dcf06710976a873";
@@ -110,7 +115,9 @@ function convertToF(event) {
   }
 }
 
-function showForecast() {
+function showForecast(response) {
+  console.log(response.data.daily);
+
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row week">`;
   let forecastDays = ["Thursday", "Saturday", "Sunday", "Monday", "Tuesday"];
@@ -133,8 +140,6 @@ function showForecast() {
 
   forecastElement.innerHTML = forecastHTML;
 }
-
-showForecast();
 
 tempUnit.addEventListener("click", convertToF);
 
