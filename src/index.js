@@ -58,7 +58,7 @@ function displayWeather(response) {
   let weatherConditions = document.querySelector("#weather-conditions");
   weatherConditions.innerHTML = response.data.weather[0].description;
   let weatherIconMain = document.querySelector("#weather-icon-main");
-  let icon = `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`;
+  let icon = `images/icons/${response.data.weather[0].icon}.png`;
 
   weatherIconMain.setAttribute("src", icon);
 
@@ -109,6 +109,32 @@ function convertToF(event) {
     celsius = true;
   }
 }
+
+function showForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row week">`;
+  let forecastDays = ["Thursday", "Saturday", "Sunday", "Monday", "Tuesday"];
+  forecastDays.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+          <div class="col first-day">
+            ${day}
+            <img src="images/icons/03d.png" alt="" class="weather-icon-small">
+            <div class="week-degrees">
+              <strong> 29&#176;</strong>/21&#176;            
+            </div>
+            Rainy
+          </div>
+        `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+
+  forecastElement.innerHTML = forecastHTML;
+}
+
+showForecast();
 
 tempUnit.addEventListener("click", convertToF);
 
