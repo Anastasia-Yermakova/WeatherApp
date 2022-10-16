@@ -115,25 +115,38 @@ function convertToF(event) {
   }
 }
 
+function updateDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
 function showForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
+  console.log(forecast);
 
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row week">`;
-  let forecastDays = ["Thursday", "Saturday", "Sunday", "Monday", "Tuesday"];
-  forecastDays.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (day, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
           <div class="col first-day">
-            ${day}
-            <img src="images/icons/03d.png" alt="" class="weather-icon-small">
+            ${updateDay(day.dt)}
+            <img src="images/icons/${
+              day.weather[0].icon
+            }.png" alt="" class="weather-icon-small">
             <div class="week-degrees">
-              <strong> 29&#176;</strong>/21&#176;            
+              <strong> ${Math.round(day.temp.max)}&#176;</strong>
+              /
+              ${Math.round(day.temp.min)}&#176;            
             </div>
-            Rainy
+            ${day.weather[0].description}
           </div>
         `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
