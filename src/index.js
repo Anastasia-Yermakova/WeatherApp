@@ -1,34 +1,36 @@
-let currentDate = new Date();
+function convertDate(apidate) {
+  let currentDate = new Date(apidate * 1000);
+  console.log(currentDate);
+  let date = document.querySelector("#date");
+  date.innerHTML = currentDate.getDate();
+  let allMonths = [
+    "Jan",
+    "Feb",
+    "March",
+    "Apr",
+    "May",
+    "June",
+    "July",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  let month = document.querySelector("#month");
+  month.innerHTML = allMonths[currentDate.getMonth()];
 
-let date = document.querySelector("#date");
-date.innerHTML = currentDate.getDate();
-let allMonths = [
-  "Jan",
-  "Feb",
-  "March",
-  "Apr",
-  "May",
-  "June",
-  "July",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-let month = document.querySelector("#month");
-month.innerHTML = allMonths[currentDate.getMonth()];
+  let hours = document.querySelector("#hours");
+  hours.innerHTML = currentDate.getHours();
 
-let hours = document.querySelector("#hours");
-hours.innerHTML = currentDate.getHours();
+  let minutes = document.querySelector("#minutes");
+  let nowMinutes = currentDate.getMinutes();
 
-let minutes = document.querySelector("#minutes");
-let nowMinutes = currentDate.getMinutes();
-
-if (nowMinutes >= 10) {
-  minutes.innerHTML = nowMinutes;
-} else {
-  minutes.innerHTML = `0${nowMinutes}`;
+  if (nowMinutes >= 10) {
+    minutes.innerHTML = nowMinutes;
+  } else {
+    minutes.innerHTML = `0${nowMinutes}`;
+  }
 }
 
 let searchForm = document.querySelector("#search-form");
@@ -42,6 +44,7 @@ function getForecast(coordinates) {
 }
 
 function displayWeather(response) {
+  console.log(response.data);
   let city = document.querySelector("#city");
   city.innerHTML = response.data.name;
   let country = document.querySelector("#country");
@@ -62,6 +65,8 @@ function displayWeather(response) {
   weatherIconMain.setAttribute("src", icon);
 
   getForecast(response.data.coord);
+  convertDate(response.data.dt);
+  console.log(response.data.dt);
 }
 function searchCity(event) {
   event.preventDefault();
@@ -99,7 +104,6 @@ function updateDay(timestamp) {
 
 function showForecast(response) {
   let forecast = response.data.daily;
-  console.log(forecast);
 
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row week">`;
@@ -118,7 +122,7 @@ function showForecast(response) {
               /
               ${Math.round(day.temp.min)}&#176;            
             </div>
-            ${day.weather[0].description}
+            <span class="forecast">${day.weather[0].description}</span>
           </div>
         `;
     }

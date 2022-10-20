@@ -142,6 +142,19 @@ ul {
 .weather-conditions {
   font-weight: 600;
   color: #252060;
+  display: block;
+}
+
+.forecast {
+  display: block;
+}
+
+.forecast:first-letter {
+  text-transform: uppercase;
+}
+
+.weather-conditions:first-letter {
+  text-transform: uppercase;
 }
 
 .weather-details {
